@@ -48,7 +48,8 @@ jobs:
             --build-arg GOOGLE_SECRET=${{ secrets.GOOGLE_SECRET }} \
             --build-arg KAKAO_ID=${{ secrets.KAKAO_ID }} \
             --build-arg KAKAO_SECRET=${{ secrets.KAKAO_SECRET }} \
-            -f ./infra/docker/Dockerfile -t ${{ secrets.DOCKER_REPO }} 
+            -f ./infra/docker/Dockerfile \
+            -t ${{ secrets.DOCKER_REPO }} \
             --push \
             .
 
