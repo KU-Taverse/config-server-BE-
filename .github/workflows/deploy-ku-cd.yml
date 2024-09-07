@@ -74,7 +74,12 @@ jobs:
               sudo docker rmi ${{ secrets.DOCKER_REPO }} || true
               # 새로운 이미지 풀 및 실행
               sudo docker pull ${{ secrets.DOCKER_REPO }}
-              sudo docker run -d --name config -p 8888:8888 ${{ secrets.DOCKER_REPO }}
+              sudo docker run -d --name config -p 8888:8888 \
+                -e GOOGLE_ID=${GOOGLE_ID} \
+                -e GOOGLE_SECRET=${GOOGLE_SECRET} \
+                -e KAKAO_ID=${KAKAO_ID} \
+                -e KAKAO_SECRET=${KAKAO_SECRET} \
+                ${{ secrets.DOCKER_REPO }}
             EOF
 
       - name: Notify
