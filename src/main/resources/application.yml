@@ -11,5 +11,3 @@ spring:
           uri: https://github.com/kamothi/config-repo
           username: ${GIT_ID}
           password: ${GIT_PASS}
-encrypt:
-  key: ${MY_SECRET}
