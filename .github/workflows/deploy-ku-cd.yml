@@ -68,8 +68,6 @@ jobs:
               # 새로운 이미지 풀 및 실행
               sudo docker pull ${{ secrets.DOCKER_REPO }}
               sudo docker run -d --name config -p 8888:8888 \
-                -e GIT_ID=${GIT_ID} \
-                -e GIT_PASS=${GIT_PASS} \
                 ${{ secrets.DOCKER_REPO }}
             EOF
 
