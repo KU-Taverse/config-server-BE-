@@ -39,8 +39,8 @@ jobs:
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
           docker buildx build \
             --platform linux/amd64,linux/arm64 \
-            --build-arg GOOGLE_ID=${{ secrets.GIT_ID }} \
-            --build-arg GOOGLE_SECRET=${{ secrets.GIT_PASS }} \
+            --build-arg GIT_ID=${{ secrets.GIT_ID }} \
+            --build-arg GIT_PASS=${{ secrets.GIT_PASS }} \
             -f ./infra/docker/Dockerfile \
             -t ${{ secrets.DOCKER_REPO }} \
             --push \
