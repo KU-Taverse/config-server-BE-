@@ -28,11 +28,6 @@ jobs:
         uses: gradle/actions/setup-gradle@417ae3ccd767c252f5661f1ace9f835f9654f2b5 # v3.1.0
 
       - name: Build with Gradle Wrapper
-        env:
-          GOOGLE_ID: ${{ secrets.GOOGLE_ID }}
-          GOOGLE_SECRET: ${{ secrets.GOOGLE_SECRET }}
-          KAKAO_ID: ${{ secrets.KAKAO_ID }}
-          KAKAO_SECRET: ${{ secrets.KAKAO_SECRET }}
         run: ./gradlew build
 
       - name: Set up Docker Buildx
@@ -44,10 +39,8 @@ jobs:
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
           docker buildx build \
             --platform linux/amd64,linux/arm64 \
-            --build-arg GOOGLE_ID=${{ secrets.GOOGLE_ID }} \
-            --build-arg GOOGLE_SECRET=${{ secrets.GOOGLE_SECRET }} \
-            --build-arg KAKAO_ID=${{ secrets.KAKAO_ID }} \
-            --build-arg KAKAO_SECRET=${{ secrets.KAKAO_SECRET }} \
+            --build-arg GOOGLE_ID=${{ secrets.GIT_ID }} \
+            --build-arg GOOGLE_SECRET=${{ secrets.GIT_PASS }} \
             -f ./infra/docker/Dockerfile \
             -t ${{ secrets.DOCKER_REPO }} \
             --push \
