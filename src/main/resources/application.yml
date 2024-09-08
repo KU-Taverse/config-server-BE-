@@ -4,11 +4,10 @@ server:
 spring:
   application:
     name: config
-  profiles:
-    active: native
   cloud:
     config:
       server:
-        bootstrap: true
-        native:
-          search-locations: classpath:/config
+        git:
+          uri: https://github.com/kamothi/config-repo
+          username: ${GIT_ID}
+          password: ${GIT_PASS}
