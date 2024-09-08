@@ -28,10 +28,8 @@ jobs:
 
       - name: Build with Gradle
         env:
-          GOOGLE_ID: ${{ secrets.GOOGLE_ID }}
-          GOOGLE_SECRET: ${{ secrets.GOOGLE_SECRET }}
-          KAKAO_ID: ${{ secrets.KAKAO_ID }}
-          KAKAO_SECRET: ${{ secrets.KAKAO_SECRET }}
+          GIT_ID: ${{ secrets.GIT_ID }}
+          GIT_PASS: ${{ secrets.GIT_PASS }}
         run: ./gradlew build
 
       - name: Publish Test Results
